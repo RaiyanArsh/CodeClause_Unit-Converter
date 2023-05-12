@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../../Assets/UCLogo.png"/>
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <title>Unit Converter||Convert Length</title>
+  </head>
+  <body>
+    <div class="mainBody">
+      <!-- navabar starts -->
+      <nav class="navbar navbar-expand-lg bg-info">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../../index.html">
+            <img class="logo" src="../../Assets/UCLogo.png" alt="" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link text-light" href="../temperature/temp.html"
+                  >Temperature</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light " href="../length/length.html">Length</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light active" href="#"
+                  >Mass</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- navabar ends -->
+
+      <!-- body starts -->
+      <div class="container-fluid flex flex-column">
+        <h2>Mass Converter</h2>
+        <div class="container flex flex-column gap-3 mt-3">
+          <div class="inputArea">
+            <form action="#">
+              <select name="values" id="values">
+                <option value="#">Select the unit</option>
+                <option value="Kilogram">Kilogram</option>
+                <option value="Hectogram">Hectogram</option>
+                <option value="Decagram">Decagram</option>
+                <option value="Grams">Grams</option>
+                <option value="Decigram">Decigram</option>
+                <option value="Centigram">Centigram</option>
+                <option value="Milligram">Milligram</option>
+                <option value="Pound">Pound</option>
+                <option value="Ounce">Ounce</option>
+              </select>
+              <input type="number" placeholder="Enter the Value" min="1" id="ivalue" oninput="getValue()"/>
+            </div>
+            <!-- <button class="btn btn-outline-primary" id="cBtn">Convert</button> -->
+          </form>
+        </div>
+        <div class="conValues flex flex-column gap-3 mt-3 colo py-3 px-5">
+          <div class="nMiles comConv flex">
+            <label for="Kilogram">Kilogram :</label>
+            <input type="number" id="Kilogram" readonly value="0">
+          </div>
+          <div class="km comConv flex">
+            <label for="Hectogram">Hectogram :</label>
+            <input type="number" id="Hectogram" value="0" readonly>
+          </div>
+          <div class="meter comConv flex">
+            <label for="Decagram">Decagram :</label>
+            <input type="number" id="Decagram" value="0" readonly>
+          </div>
+          <div class="feet comConv flex">
+            <label for="Grams">Grams :</label>
+            <input type="number" id="Grams" value="0" readonly>
+          </div>
+          <div class="feet comConv flex">
+            <label for="Decigram">Decigram :</label>
+            <input type="number" id="Decigram" value="0" readonly>
+          </div>
+         
+          <div class="yard comConv flex">
+            <label for="Centigram">Centigram :</label>
+            <input type="number" id="Centigram" value="0" readonly>
+          </div>
+          <div class="inch comConv flex">
+            <label for="Milligram">Milligram :</label>
+            <input type="number" id="Milligram" value="0" readonly>
+          </div>
+          <div class="cm comConv flex">
+            <label for="Pound">Pound :</label>
+            <input type="number" id="Pound" value="0" readonly>
+          </div>
+          <div class="mm comConv flex">
+            <label for="Ounce">Ounce :</label>
+            <input type="number" id="Ounce" value="0" readonly>
+          </div>        
+        </div>
+      </div>
+      <!-- body ends -->
+
+      <!-- footer starts -->
+      <footer class="foot flex footPages bg-dark">
+        <p class="text-light">This is footer &copy copyrights</p>
+      </footer>
+      <!-- footer ends -->
+    </div>
+  </body>
+  <!-- <script src="../../js/index.js"></script> -->
+  <script>
+    // for length calculations
+let btn=document.getElementById("cBtn");
+    let Si=document.getElementById("values");
+    let iValue=document.querySelector('#ivalue');
+    let Kilogram=document.querySelector('#Kilogram');
+    let Hectogram=document.querySelector('#Hectogram');
+    let Decagram=document.querySelector('#Decagram');
+    let Grams=document.querySelector('#Grams');
+    let Decigram=document.querySelector('#Decigram');
+    let Centigram=document.querySelector('#Centigram');
+    let Milligram=document.querySelector('#Milligram');
+    let Pound=document.querySelector('#Pound');
+    let Ounce=document.querySelector('#Ounce');
+    
+      function getValue(){
+      if(Si.value=="cm"){
+       cm.value= Math.round(iValue.value).toFixed(2);
+       mm.value=(iValue.value*10).toFixed(3);
+       feet.value=(iValue.value/30.48).toFixed(3);
+       inch.value=(iValue.value/2.54).toFixed(3);
+       yard.value=(iValue.value/91.4).toFixed(3);
+       meter.value=(iValue.value/100).toFixed(2);
+       km.value=(iValue.value/100000).toFixed(6);
+       nMiles.value=(iValue.value/185200).toFixed(7);
+      }
+      else if(Si.value=="Kilogram"){
+       Kilogram.value= Math.round(iValue.value).toFixed(2);
+       Hectogram.value=(iValue.value*10).toFixed(2)
+       Decagram.value=(iValue.value*100).toFixed(2)
+       Grams.value=(iValue.value*1000).toFixed(2);
+       Decigram.value=(iValue.value*10000).toFixed(2)
+       Centigram.value=(iValue.value*100000).toFixed(2)
+       Milligram.value=(iValue.value*1000000).toFixed(2)
+       Pound.value=(iValue.value*2.20).toFixed(4)
+       Ounce.value=(iValue.value*35.27).toFixed(3)
+      }
+      else if(Si.value=="Grams"){
+       Grams.value= Math.round(iValue.value).toFixed(2);
+       Kilogram.value=(iValue.value*0.001).toFixed(4);
+       Hectogram.value=(iValue.value*0.01).toFixed(3)
+       Decagram.value=(iValue.value*0.1).toFixed(2)
+       Decigram.value=(iValue.value*10).toFixed(2)
+       Centigram.value=(iValue.value*100).toFixed(2)
+       Milligram.value=(iValue.value*1000).toFixed(2)
+       Pound.value=(iValue.value*0.0022046226).toFixed(4)
+       Ounce.value=(iValue.value*0.0352739619).toFixed(4)
+      }
+
+    else if (Si.value == "Pound") {
+    Pound.value = Math.round(iValue.value).toFixed(2);
+    Hectogram.value = (iValue.value * 4.5359237).toFixed(3);
+    Decagram.value = (iValue.value * 45.359237).toFixed(3);
+    Grams.value = (iValue.value * 453.592).toFixed(3);
+    Decigram.value = (iValue.value * 4535.9237).toFixed(3);
+    Centigram.value = (iValue.value * 45359.237).toFixed(3);
+    Milligram.value = (iValue.value * 453592.37).toFixed(3);
+    Kilogram.value = (iValue.value * 0.45359237).toFixed(3);
+    Ounce.value = (iValue.value * 16).toFixed(3);
+}
+else if (Si.value == "Ounce") {
+    Ounce.value = Math.round(iValue.value).toFixed(2);
+    Hectogram.value = (iValue.value * 0.283495231).toFixed(3);
+    Decagram.value = (iValue.value * 2.83495231).toFixed(3);
+    Grams.value = (iValue.value * 28.34).toFixed(3);
+    Decigram.value = (iValue.value * 283.495231).toFixed(3);
+    Centigram.value = (iValue.value * 2834.95231).toFixed(3);
+    Milligram.value = (iValue.value * 28349.5231).toFixed(3);
+    Kilogram.value = (iValue.value * 0.0283495231).toFixed(3);
+    Pound.value = (iValue.value * 0.0625).toFixed(3);
+}
+
+
+else if (Si.value == "Milligram") {
+    Milligram.value = Math.round(iValue.value).toFixed(2);
+    Grams.value = (iValue.value * 0.001).toFixed(6);
+    Hectogram.value = (iValue.value * 0.00001).toFixed(6);
+    Decagram.value = (iValue.value * 0.0001).toFixed(6);
+    Decigram.value = (iValue.value * 0.01).toFixed(6);
+    Centigram.value = (iValue.value * 0.1).toFixed(6);
+    Kilogram.value = (iValue.value * 0.000001).toFixed(6);
+    Pound.value = (iValue.value * 0.00000220462).toFixed(6);
+    Ounce.value = (iValue.value * 0.0000352739619).toFixed(6);
+}
+
+      else if(Si.value=="Decagram"){
+       Decagram.value= Math.round(iValue.value).toFixed(2);
+       Hectogram.value=(iValue.value*0.1).toFixed(2)
+       Kilogram.value=(iValue.value*0.01).toFixed(2)
+       Decigram.value=(iValue.value*100).toFixed(2)
+       Grams.value=(iValue.value*10).toFixed(2);
+       Centigram.value=(iValue.value*1000).toFixed(2)
+       Milligram.value=(iValue.value*10000).toFixed(2)
+       Pound.value=(iValue.value*0.0220462262).toFixed(4)
+       Ounce.value=(iValue.value*0.3527396195).toFixed(4)
+      }
+      else if (Si.value == "Centigram") {
+    Centigram.value = Math.round(iValue.value).toFixed(2);
+    Grams.value = (iValue.value * 0.01).toFixed(2);
+    Hectogram.value = (iValue.value * 0.0001).toFixed(4);
+    Decagram.value = (iValue.value * 0.001).toFixed(4);
+    Decigram.value = (iValue.value * 0.1).toFixed(3);
+    Kilogram.value = (iValue.value * 0.00001).toFixed(5);
+    Milligram.value = (iValue.value * 10).toFixed(3);
+    Pound.value = (iValue.value * 0.0000220462).toFixed(8);
+    Ounce.value = (iValue.value * 0.0003527396).toFixed(8);
+}
+
+
+      else if(Si.value=="Decigram"){
+       Decigram.value= Math.round(iValue.value).toFixed(2);
+       Hectogram.value=(iValue.value*0.001).toFixed(3)
+       Decagram.value=(iValue.value*0.01).toFixed(2)
+       Centigram.value=(iValue.value*10).toFixed(3)
+       Grams.value=(iValue.value*0.1).toFixed(2);
+       Kilogram.value=(iValue.value*0.0001).toFixed(6)
+       Milligram.value=(iValue.value*100).toFixed(3)
+    //    Pound.value=(iValue.value*0.0000220462).toFixed(6)
+    Pound.value = (iValue.value * 2.20462e-5).toFixed(6)
+       Ounce.value=(iValue.value*0.0003527396).toFixed(4)
+      }
+      else if(Si.value=="Hectogram"){
+       Hectogram.value= Math.round(iValue.value).toFixed(2);
+       Kilogram.value=(iValue.value*0.1).toFixed(2)
+       Decagram.value=(iValue.value*10).toFixed(2)
+       Grams.value=(iValue.value*100).toFixed(2);
+       Decigram.value=(iValue.value*1000).toFixed(2)
+       Centigram.value=(iValue.value*10000).toFixed(2)
+       Milligram.value=(iValue.value*100000).toFixed(2)
+       Pound.value=(iValue.value*0.2204622622 ).toFixed(2)
+       Ounce.value=(iValue.value*3.5273961948 ).toFixed(2)
+      }
+    }
+  </script>
+</html>
